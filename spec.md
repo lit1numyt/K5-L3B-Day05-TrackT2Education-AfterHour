@@ -6,7 +6,7 @@
 |---|---|---|
 | Đồng Hữu Nguyên Khoa | 2A202604000 |  |
 | Trần Trọng Đạt | 2A202604030 |  |
-|  |  |  |
+| Nguyễn Lương Nguyên | 2A202604005 | Làm kịch bản rủi ro FC-01 đến FC-04, làm system prompt cho FC-01 đến FC-04 |
 
 
 ## §1. Lát cắt & phạm vi
