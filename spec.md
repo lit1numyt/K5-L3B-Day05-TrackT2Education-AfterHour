@@ -2,19 +2,20 @@
 
 **Lớp:** L3B · **Bàn / zone:** ____ · **Track:** 02 Education
 
-| Họ và Tên | Mã Học Viên | Việc đã làm |
-|---|---|---|
-| Đồng Hữu Nguyên Khoa | 2A202604000 |  |
-| Trần Trọng Đạt | 2A202604030 |Làm kịch bản rủi ro FC-05 đến FC-08, làm highest cost scenarios  |
-| Nguyễn Lương Nguyên | 2A202604005 | Làm kịch bản rủi ro FC-01 đến FC-04, làm system prompt cho FC-01 đến FC-04 |
-
+| Họ và Tên             | Mã Học Viên | Việc đã làm                                                                     |
+| ------------------------ | -------------- | ----------------------------------------------------------------------------------- |
+| Đồng Hữu Nguyên Khoa | 2A202604000    | Build UI/UX, mock-data cho từng case, tham gia phản biện cho từng case. PM.     |
+| Trần Trọng Đạt       | 2A202604030    | Làm kịch bản rủi ro FC-05 đến FC-08, làm highest cost scenarios              |
+| Nguyễn Lương Nguyên  | 2A202604005    | Làm kịch bản rủi ro FC-01 đến FC-04, làm system prompt cho FC-01 đến FC-04 |
 
 ## §1. Lát cắt & phạm vi
+
 - Lát cắt (chép từ track).
-- 3 việc tính năng KHÔNG làm, mỗi việc một câu vì sao.  
-Lát cắt: Trong trợ lý học bài của trang khoá học (kiểu ChatGPT Study mode), khi học viên đang hỏi bài lúc tối muộn, khi không còn ai để hỏi, AI giảng kèm trích tài liệu, hỏi lại cho rõ, gợi ý từng bước, hay nói thẳng "tài liệu không có, hỏi giảng viên", để học viên hiểu đúng bài mình đang học, không chép đáp án, không học sai mà không biết.
+- 3 việc tính năng KHÔNG làm, mỗi việc một câu vì sao.
+  Lát cắt: Trong trợ lý học bài của trang khoá học (kiểu ChatGPT Study mode), khi học viên đang hỏi bài lúc tối muộn, khi không còn ai để hỏi, AI giảng kèm trích tài liệu, hỏi lại cho rõ, gợi ý từng bước, hay nói thẳng "tài liệu không có, hỏi giảng viên", để học viên hiểu đúng bài mình đang học, không chép đáp án, không học sai mà không biết.
 
 3 việc tính năng không làm:
+
 - Tính năng không đưa ra kết quả cho câu hỏi về đáp án của học viên: lí do là gọi ý quá tay thì học viên sẽ chép và không hiểu được bài.
 - Tính năng đưa ra thông tin đúng với tài liệu được cung cấp, không bịa thêm thông tin, lý do là đưa ra thông tin không thuộc phạm vi tài liệu có thể khiến cho học sinh học sai mà không biết.
 - Tính năng không đưa ra câu trả lời nếu như không chắc chắn câu hỏi của học viên, nếu AI quá tự tin và tự đưa câu trả lời có thể khiến câu trả lời sai lệch so với ý định ban đầu của học viên.
@@ -25,16 +26,16 @@ Lát cắt: Trong trợ lý học bài của trang khoá học (kiểu ChatGPT S
 - Bằng chứng: cột "AI có thể sai thế nào" trỏ về một tool hoặc một dòng dữ liệu của track (hoặc chỗ dữ liệu không có).
 - Quyết định: 2 kịch bản đắt nhất — vì sao đắt hơn các kịch bản còn lại; kịch bản nào suýt được chọn và vì sao không.
 
-| Kịch bản | Tin người dùng | Lớp | AI có thể sai thế nào và bằng chứng | Sản phẩm tốt nên làm gì | Nhãn |
-|---|---|---|---|---|---|
-| [FC-01 — Tài liệu sai độ lệch chuẩn](failure-cases/FC-01-tai-lieu-sai-do-lech-chuan.md) | “Em tự luyện dãy 0, 1, 0, 1 ra phương sai 0,25, độ lệch chuẩn 0,5. Tài liệu bảo độ lệch chuẩn luôn nhỏ hơn phương sai, em sai ở đâu?” | ① | `tra_cuu_tai_lieu` trả §3.3 có câu sai “độ lệch chuẩn luôn nhỏ hơn phương sai”; AI dùng trích dẫn thật để bác phép tính đúng hoặc bịa lỗi chia n−1. | Kiểm tra √0,25 = 0,5; chỉ câu cần xem lại; tách trích dẫn khỏi lập luận của trợ lý; đề nghị báo giảng viên, không tự sửa tài liệu hay nhận xét năng lực học viên. | Không chấp nhận được |
-| [FC-02 — Nguồn không tồn tại](failure-cases/FC-02-nguon-khong-ton-tai-slide-12.md) | “Công thức độ lệch ở slide 12 sao lại có n−1?” | ② | Tra cứu không có “slide 12”; tài liệu chỉ có §3.1–§3.5, §3.3 không chứa công thức n−1. AI ngầm gán slide 12 cho §3.3 hoặc bịa nội dung nguồn. | Nói rõ không tìm thấy nguồn; hỏi học viên đọc ở đâu và “độ lệch” nghĩa gì; không khẳng định khoá dùng n hay n−1. | Sửa được |
-| [FC-03 — Nội dung buổi chưa học](failure-cases/FC-03-noi-dung-buoi-chua-hoc-p-value.md) | “p-value là gì? Bài 3 câu (b) có nên dùng p-value để chứng minh trung vị tốt hơn không?” | ③ | `tra_cuu_tai_lieu` chỉ tìm buổi 1–3 nên trả rỗng; đề cương đặt p-value ở buổi 7. AI giảng trọn bằng kiến thức ngoài và gợi ý áp dụng vào Bài 3. | Chỉ rõ buổi 7 chưa mở; giới thiệu tối đa một câu có nhãn ngoài tài liệu đã học; dẫn §3.1, §3.2, §3.4 cho phạm vi Bài 3, không viết đáp án. | Nhẹ |
-| [FC-04 — Gợi ý quá tay](failure-cases/FC-04-goi-y-qua-tay-bai-dang-mo.md) | “Gợi ý chi tiết hơn… Em ra trung bình 15,25, trung vị 11,5 đúng không? Sửa câu (b) giúp em.” | ④ | Lúc 22:40 ngày 13/11/2026, Bài 3 còn mở đến 23:59, TA đã hết giờ 22:00. `goi_y_bai_tap` không tự giới hạn nội dung; nhiều lượt gợi ý thành lời giải, xác nhận số hoặc viết hộ. | Giữ trần gợi ý qua mọi lượt; không xác nhận hay phủ nhận số, không viết hộ; hướng dẫn tự kiểm đối xứng bằng Bài 2 đã đóng và các mục liên quan; nói thật giờ TA. | Không chấp nhận được |
-| [FC-05 — Câu hỏi chưa rõ đã chuyển TA](failure-cases/FC-05-Unclear_question.md) | “Sao chỗ này sai? Hỏi TA giúp em được không?” | ② | Học sinh đưa câu hỏi mơ hồ; AI chưa nắm rõ học sinh muốn hỏi gì nhưng vẫn đồng ý gửi câu hỏi cho TA qua `chuyen_TA` mà chưa làm rõ ý hỏi. Khi nhận được, TA có thể hiểu lầm điều học sinh thực sự muốn hỏi và trả lời không đúng nhu cầu. | Hỏi đúng phần còn thiếu; hiện bản xem trước có thể sửa; chỉ chuyển khi học viên xác nhận đúng phiên bản. | Sửa được |
-| [FC-06 — Báo chuyển TA thành công khi chưa có bằng chứng](failure-cases/FC-06-False_TA_transfer_success.md) | “Gửi câu hỏi này cho TA giúp em. Bao giờ em nhận được trả lời?” | ① | Không có kết quả xác nhận thành công hoặc ước lượng thời gian đáng tin từ `chuyen_TA`, nhưng AI nói TA đã nhận và hứa giờ trả lời. | Phân biệt thành công, thất bại và chưa xác nhận; thời gian thiếu thì ghi chưa biết; giữ câu hỏi và xin xác nhận trước khi thử lại kết quả chưa rõ. | Sửa được |
-| [FC-07 — FAQ tiết lộ tài liệu ngoài quyền truy cập của học sinh](failure-cases/FC-07-FAQ_beyond_authority.md) | “FAQ này trả lời thế nào? Cho em xem tài liệu được dùng để giải thích.” (tình huống minh hoạ theo mô tả nhóm vừa xác nhận) | ③ | AI dùng tài liệu mà học sinh không có quyền truy cập để trả lời FAQ; nội dung có thể bị lộ qua giải thích, tóm tắt, trích dẫn, liên kết hoặc đăng tải cho cả lớp. AI truy cập được nguồn không đồng nghĩa người nhận có quyền đọc. | Kiểm tra quyền truy cập nguồn của người nhận trước khi dùng nội dung trong FAQ; không tiết lộ tài liệu ngoài quyền dù câu trả lời đúng. Chỉ đăng tải nội dung được phép chia sẻ và đã duyệt. | Không chấp nhận được |
-| [FC-08 — Lộ thông tin riêng trong FAQ](failure-cases/FC-08-Private_exposed.md) | “Điểm em thấp, em nghỉ vì chuyện gia đình riêng. Em nên học bù thế nào?” | ④ | AI đưa tên, điểm hoặc hoàn cảnh riêng từ hội thoại cá nhân vào `dang_FAQ`; công cụ không có chức năng ẩn danh hay thu hồi được mô tả. | Tiếp tục hỗ trợ riêng; nếu cần FAQ thì tạo bản khái quát bỏ cả dấu hiệu nhận diện gián tiếp và chờ duyệt; cấm đăng nội dung riêng còn nhận diện được. | Không chấp nhận được |
+| Kịch bản                                                                                                             | Tin người dùng                                                                                                                                               | Lớp | AI có thể sai thế nào và bằng chứng                                                                                                                                                                                                                                                    | Sản phẩm tốt nên làm gì                                                                                                                                                                                                       | Nhãn                      |
+| ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| [FC-01 — Tài liệu sai độ lệch chuẩn](failure-cases/FC-01-tai-lieu-sai-do-lech-chuan.md)                          | “Em tự luyện dãy 0, 1, 0, 1 ra phương sai 0,25, độ lệch chuẩn 0,5. Tài liệu bảo độ lệch chuẩn luôn nhỏ hơn phương sai, em sai ở đâu?” | ①   | `tra_cuu_tai_lieu` trả §3.3 có câu sai “độ lệch chuẩn luôn nhỏ hơn phương sai”; AI dùng trích dẫn thật để bác phép tính đúng hoặc bịa lỗi chia n−1.                                                                                                           | Kiểm tra √0,25 = 0,5; chỉ câu cần xem lại; tách trích dẫn khỏi lập luận của trợ lý; đề nghị báo giảng viên, không tự sửa tài liệu hay nhận xét năng lực học viên.                                   | Không chấp nhận được |
+| [FC-02 — Nguồn không tồn tại](failure-cases/FC-02-nguon-khong-ton-tai-slide-12.md)                                 | “Công thức độ lệch ở slide 12 sao lại có n−1?”                                                                                                       | ②   | Tra cứu không có “slide 12”; tài liệu chỉ có §3.1–§3.5, §3.3 không chứa công thức n−1. AI ngầm gán slide 12 cho §3.3 hoặc bịa nội dung nguồn.                                                                                                                        | Nói rõ không tìm thấy nguồn; hỏi học viên đọc ở đâu và “độ lệch” nghĩa gì; không khẳng định khoá dùng n hay n−1.                                                                                       | Sửa được               |
+| [FC-03 — Nội dung buổi chưa học](failure-cases/FC-03-noi-dung-buoi-chua-hoc-p-value.md)                            | “p-value là gì? Bài 3 câu (b) có nên dùng p-value để chứng minh trung vị tốt hơn không?”                                                        | ③   | `tra_cuu_tai_lieu` chỉ tìm buổi 1–3 nên trả rỗng; đề cương đặt p-value ở buổi 7. AI giảng trọn bằng kiến thức ngoài và gợi ý áp dụng vào Bài 3.                                                                                                                 | Chỉ rõ buổi 7 chưa mở; giới thiệu tối đa một câu có nhãn ngoài tài liệu đã học; dẫn §3.1, §3.2, §3.4 cho phạm vi Bài 3, không viết đáp án.                                                            | Nhẹ                       |
+| [FC-04 — Gợi ý quá tay](failure-cases/FC-04-goi-y-qua-tay-bai-dang-mo.md)                                           | “Gợi ý chi tiết hơn… Em ra trung bình 15,25, trung vị 11,5 đúng không? Sửa câu (b) giúp em.”                                                     | ④   | Lúc 22:40 ngày 13/11/2026, Bài 3 còn mở đến 23:59, TA đã hết giờ 22:00. `goi_y_bai_tap` không tự giới hạn nội dung; nhiều lượt gợi ý thành lời giải, xác nhận số hoặc viết hộ.                                                                                | Giữ trần gợi ý qua mọi lượt; không xác nhận hay phủ nhận số, không viết hộ; hướng dẫn tự kiểm đối xứng bằng Bài 2 đã đóng và các mục liên quan; nói thật giờ TA.                               | Không chấp nhận được |
+| [FC-05 — Câu hỏi chưa rõ đã chuyển TA](failure-cases/FC-05-Unclear_question.md)                                 | “Sao chỗ này sai? Hỏi TA giúp em được không?”                                                                                                         | ②   | Học sinh đưa câu hỏi mơ hồ; AI chưa nắm rõ học sinh muốn hỏi gì nhưng vẫn đồng ý gửi câu hỏi cho TA qua `chuyen_TA` mà chưa làm rõ ý hỏi. Khi nhận được, TA có thể hiểu lầm điều học sinh thực sự muốn hỏi và trả lời không đúng nhu cầu. | Hỏi đúng phần còn thiếu; hiện bản xem trước có thể sửa; chỉ chuyển khi học viên xác nhận đúng phiên bản.                                                                                                     | Sửa được               |
+| [FC-06 — Báo chuyển TA thành công khi chưa có bằng chứng](failure-cases/FC-06-False_TA_transfer_success.md)    | “Gửi câu hỏi này cho TA giúp em. Bao giờ em nhận được trả lời?”                                                                                   | ①   | Không có kết quả xác nhận thành công hoặc ước lượng thời gian đáng tin từ `chuyen_TA`, nhưng AI nói TA đã nhận và hứa giờ trả lời.                                                                                                                               | Phân biệt thành công, thất bại và chưa xác nhận; thời gian thiếu thì ghi chưa biết; giữ câu hỏi và xin xác nhận trước khi thử lại kết quả chưa rõ.                                                     | Sửa được               |
+| [FC-07 — FAQ tiết lộ tài liệu ngoài quyền truy cập của học sinh](failure-cases/FC-07-FAQ_beyond_authority.md) | “FAQ này trả lời thế nào? Cho em xem tài liệu được dùng để giải thích.” (tình huống minh hoạ theo mô tả nhóm vừa xác nhận)            | ③   | AI dùng tài liệu mà học sinh không có quyền truy cập để trả lời FAQ; nội dung có thể bị lộ qua giải thích, tóm tắt, trích dẫn, liên kết hoặc đăng tải cho cả lớp. AI truy cập được nguồn không đồng nghĩa người nhận có quyền đọc.            | Kiểm tra quyền truy cập nguồn của người nhận trước khi dùng nội dung trong FAQ; không tiết lộ tài liệu ngoài quyền dù câu trả lời đúng. Chỉ đăng tải nội dung được phép chia sẻ và đã duyệt. | Không chấp nhận được |
+| [FC-08 — Lộ thông tin riêng trong FAQ](failure-cases/FC-08-Private_exposed.md)                                      | “Điểm em thấp, em nghỉ vì chuyện gia đình riêng. Em nên học bù thế nào?”                                                                        | ④   | AI đưa tên, điểm hoặc hoàn cảnh riêng từ hội thoại cá nhân vào `dang_FAQ`; công cụ không có chức năng ẩn danh hay thu hồi được mô tả.                                                                                                                           | Tiếp tục hỗ trợ riêng; nếu cần FAQ thì tạo bản khái quát bỏ cả dấu hiệu nhận diện gián tiếp và chờ duyệt; cấm đăng nội dung riêng còn nhận diện được.                                             | Không chấp nhận được |
 
 ### Hai kịch bản đắt nhất
 
@@ -42,12 +43,12 @@ Lát cắt: Trong trợ lý học bài của trang khoá học (kiểu ChatGPT S
 
 **FC-01** được chọn vì nguồn trích dẫn có thật nhưng sai. AI không chỉ truyền sai kiến thức mà còn khiến học viên sửa kết quả đúng thành sai. Cùng §3.3 có thể gây lỗi lặp lại cho nhiều người; học viên khó nhận ra vì câu trả lời có mã mục chính thức. Khác FC-06 chủ yếu làm chậm việc nhận hỗ trợ, FC-01 tạo hiểu nhầm bền vững và có thể ảnh hưởng các buổi học sau.
 
-| Yếu tố | FC-07 | FC-01 |
-|---|---|---|
-| Người chịu hại | Chủ tài liệu và các bên có thông tin trong tài liệu bị FAQ tiết lộ cho học sinh không có quyền truy cập. | Người hỏi và các học viên tiếp tục dùng §3.3. |
-| Khả năng đảo ngược | Chỉ một phần: chặn tiết lộ tiếp, gỡ FAQ nếu có công cụ; không thu hồi chắc chắn nội dung đã đọc hoặc sao chép. | Chỉ một phần; sửa nguồn chưa chắc sửa được kiến thức đã học thuộc. |
-| Giá của chờ người | FAQ chỉ dùng nguồn người nhận được phép đọc; nguồn chưa rõ quyền không được tiết lộ trong khi chờ xác minh. Đăng tải cho lớp còn cần duyệt. | Có thể giải thích phép tính ngay; việc sửa tài liệu chờ giảng viên. |
-| Cơ sở ưu tiên | Rủi ro bảo mật trực tiếp: FAQ làm lộ tài liệu cho học sinh không có quyền truy cập. | Sai kiến thức khó phát hiện vì có nguồn chính thức bảo chứng. |
+| Yếu tố                 | FC-07                                                                                                                                                                      | FC-01                                                                               |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Người chịu hại       | Chủ tài liệu và các bên có thông tin trong tài liệu bị FAQ tiết lộ cho học sinh không có quyền truy cập.                                                 | Người hỏi và các học viên tiếp tục dùng §3.3.                            |
+| Khả năng đảo ngược | Chỉ một phần: chặn tiết lộ tiếp, gỡ FAQ nếu có công cụ; không thu hồi chắc chắn nội dung đã đọc hoặc sao chép.                                      | Chỉ một phần; sửa nguồn chưa chắc sửa được kiến thức đã học thuộc. |
+| Giá của chờ người   | FAQ chỉ dùng nguồn người nhận được phép đọc; nguồn chưa rõ quyền không được tiết lộ trong khi chờ xác minh. Đăng tải cho lớp còn cần duyệt. | Có thể giải thích phép tính ngay; việc sửa tài liệu chờ giảng viên.    |
+| Cơ sở ưu tiên        | Rủi ro bảo mật trực tiếp: FAQ làm lộ tài liệu cho học sinh không có quyền truy cập.                                                                          | Sai kiến thức khó phát hiện vì có nguồn chính thức bảo chứng.           |
 
 Chưa có số liệu tần suất, nên lựa chọn dựa trên hậu quả, độ khó phát hiện và khả năng phục hồi, không khẳng định hai ca này xảy ra thường xuyên nhất.
 
@@ -58,6 +59,7 @@ FC-08 vẫn là lỗi không chấp nhận được vì có thể gây mất ri�
 ## §3. Khi AI sai (chặng 3)
 
 Với mỗi kịch bản đắt nhất:
+
 - AI nói gì (nguyên văn) · người dùng thấy gì · làm gì tiếp · ai được báo, sau bao lâu.
 - Quyết định: hỏi lại / trả lời kèm giới hạn / dừng và chuyển người — chọn cách nào, đã loại cách nào, vì sao.
 - Loại lỗi (hệ thống / người dùng / ngữ cảnh) và vì sao cách nói, cách sửa đi theo loại đó.
@@ -101,56 +103,167 @@ Các trạng thái, lời thoại và kênh báo dưới đây là yêu cầu th
 
 ### Nguyên tắc HAX/PAIR gắn với giao diện
 
-| Ca | Nguyên tắc | Vị trí áp dụng cụ thể |
-|---|---|---|
-| FC-07 | HAX G1 — Nói rõ hệ thống làm được gì | Thông báo FAQ chỉ được giải thích bằng nguồn học sinh có quyền đọc; không đưa nội dung hạn chế vào thông báo từ chối. |
-| FC-07 | HAX G1 — Nói rõ hệ thống làm được gì | Thông báo FAQ chỉ được giải thích bằng nguồn học sinh có quyền đọc; không đưa nội dung hạn chế vào thông báo từ chối. |
-| FC-07 | HAX G9 — Hỗ trợ sửa lỗi hiệu quả | Nút báo FAQ làm lộ tài liệu và đường xử lý hạn chế tiếp tục tiết lộ; không hứa thu hồi mọi bản sao. |
-| FC-01 | HAX G11 — Giải thích vì sao hệ thống hành động | Tách thẻ “Trích §3.3” khỏi phần kiểm tra √0,25 = 0,5. |
-| FC-01 | HAX G2 — Nói rõ mức đáng tin | Nhãn “Lập luận của trợ lý, chưa được giảng viên xác nhận”. |
-| FC-01 | HAX G15 — Khuyến khích phản hồi cụ thể | Nút báo gắn ngay trên câu bị nghi sai, kèm mã mục và phản ví dụ. |
+| Ca    | Nguyên tắc                                            | Vị trí áp dụng cụ thể                                                                                                                     |
+| ----- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| FC-07 | HAX G1 — Nói rõ hệ thống làm được gì          | Thông báo FAQ chỉ được giải thích bằng nguồn học sinh có quyền đọc; không đưa nội dung hạn chế vào thông báo từ chối. |
+| FC-07 | HAX G1 — Nói rõ hệ thống làm được gì          | Thông báo FAQ chỉ được giải thích bằng nguồn học sinh có quyền đọc; không đưa nội dung hạn chế vào thông báo từ chối. |
+| FC-07 | HAX G9 — Hỗ trợ sửa lỗi hiệu quả                 | Nút báo FAQ làm lộ tài liệu và đường xử lý hạn chế tiếp tục tiết lộ; không hứa thu hồi mọi bản sao.                      |
+| FC-01 | HAX G11 — Giải thích vì sao hệ thống hành động | Tách thẻ “Trích §3.3” khỏi phần kiểm tra √0,25 = 0,5.                                                                                 |
+| FC-01 | HAX G2 — Nói rõ mức đáng tin                      | Nhãn “Lập luận của trợ lý, chưa được giảng viên xác nhận”.                                                                      |
+| FC-01 | HAX G15 — Khuyến khích phản hồi cụ thể           | Nút báo gắn ngay trên câu bị nghi sai, kèm mã mục và phản ví dụ.                                                                   |
 
 ## §4. Mức tự chủ (chặng 4)
 
 Với mỗi tool:
+
 - Mức của nhóm (tự làm / cần người duyệt / cấm). Nếu cần người duyệt: ai duyệt · người duyệt thấy gì · quá hạn thì sao.
 - Lý do theo cost-of-error: sai thì ai chịu gì · đảo lại được không · chờ người thì mất gì.
 - Phương án đã cân nhắc và vì sao loại.
-Thêm:
+  Thêm:
 - Tool khó xếp nhất: mỗi người từng chọn gì, cái giá của mỗi phía (trỏ về kịch bản ở §2), nhóm chốt thế nào.
 - Thử mức đã đặt trên 2 kịch bản đắt nhất + 1 kịch bản bình thường: cái sai có bị chặn không? còn việc nào làm khi lẽ ra phải hỏi? người dùng bình thường có phải chờ vô ích không?
 - Luật thêm hoặc tool tách bước (nếu có), và vì sao.
 - Một mức tự chủ đã đổi lời hứa nào với người dùng.
 
-
 ### Quyết định cho từng công cụ
 
-| Công cụ | Mức đề xuất của nhóm | Ai duyệt, thấy gì, không phản hồi thì sao | Giá của lỗi và giá của chờ | Phương án đã cân nhắc |
-|---|---|---|---|---|
-| `tra_cuu_tai_lieu` | **Tự làm** với tra cứu trong phạm vi được phép cung cấp cho học sinh; không dùng kết quả ngoài phạm vi đó để trả lời hoặc đăng FAQ. | Không cần người duyệt mỗi lần. Câu nguồn mâu thuẫn phép tính phải được gắn cờ; giảng viên quyết định sửa nguồn. | FC-01–FC-03: diễn giải sai gây học sai; tra cứu không đổi dữ liệu nhưng câu trả lời chỉ sửa được một phần. Bắt duyệt mọi lần làm mất hỗ trợ buổi tối. | Loại coi mọi trích dẫn là đúng và loại bắt duyệt mọi truy vấn; giữ tự tra cứu, thêm luật kiểm nguồn và trình bày giới hạn. |
-| `goi_y_bai_tap` | **Tự làm có trần** cho gợi ý bước đầu; **cấm** giải hộ, xác nhận/phủ nhận đáp số hoặc viết lại câu trả lời của bài đang mở. Với bài đã đóng và có đáp án công bố, được giải thích đầy đủ trong phạm vi cho phép. | Không chờ TA duyệt gợi ý cơ bản. Trạng thái bài lấy từ dữ liệu khoá học; nếu chưa rõ, kiểm tra hoặc hỏi lại trước khi mở mức giải chi tiết. | FC-04: lộ đáp án làm mất tự học và công bằng, không thể làm người học “chưa thấy”. Chờ TA lúc 22:40 có thể qua hạn bài 23:59. | Loại tăng độ sâu theo số lần xin thêm; loại chờ duyệt mọi gợi ý vì ngoài giờ không có người. Chọn trần cứng áp dụng cả chuỗi hội thoại. |
-| `chuyen_TA` | **Cần người duyệt:** học viên xác nhận nội dung. | Học viên xem bài tập, phần đã thử, câu hỏi cụ thể, giờ trực và ước lượng có căn cứ. Sửa bản xem trước thì xác nhận lại; không trả lời/hủy thì không gửi. Với lần thử trước chưa rõ kết quả, cảnh báo khả năng gửi trùng trước khi thử lại. | FC-05–FC-06: chuyển sai hoặc báo thành công giả gây chậm học và tốn công TA; sửa được một phần. Chờ học viên duyệt ngắn hơn vòng hỏi sai rồi sửa. Không yêu cầu TA duyệt trước chỉ để nhận câu hỏi. | Loại tự đoán rồi chuyển; loại coi gọi công cụ là đã thành công; chọn xem trước → xác nhận → gửi → hiện kết quả thật. |
-| `dang_FAQ` | **Cần TA/giảng viên duyệt** với nội dung được phép chia sẻ; **cấm** tiết lộ thông tin ngoài quyền cung cấp cho học sinh hoặc thông tin cá nhân còn nhận diện được. | Người duyệt kiểm tra đúng câu hỏi, câu trả lời, nguồn, quyền tiết lộ cho đối tượng nhận và thông tin riêng. Duyệt nội dung không thay thế quyền công bố nguồn. Không phản hồi thì giữ chờ; sửa nội dung phải duyệt lại. | FC-07: lộ thông tin ngoài quyền hạn gây rủi ro bảo mật trực tiếp; FC-08: lộ riêng tư. Gỡ nội dung chỉ hạn chế lan truyền, không thu hồi được mọi bản sao. Chờ duyệt FAQ chấp nhận được. | Loại quan điểm thông tin đúng hoặc AI đọc được thì có thể công khai; loại đăng kèm cảnh báo. Chỉ dùng nguồn được phép tiết lộ cho đúng đối tượng, rồi duyệt phiên bản trước khi đăng. |
+| Công cụ            | Mức đề xuất của nhóm                                                                                                                                                                                                                                                         | Ai duyệt, thấy gì, không phản hồi thì sao                                                                                                                                                                                                                                                   | Giá của lỗi và giá của chờ                                                                                                                                                                                                            | Phương án đã cân nhắc                                                                                                                                                                                                       |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tra_cuu_tai_lieu` | **Tự làm** với tra cứu trong phạm vi được phép cung cấp cho học sinh; không dùng kết quả ngoài phạm vi đó để trả lời hoặc đăng FAQ.                                                                                                                | Không cần người duyệt mỗi lần. Câu nguồn mâu thuẫn phép tính phải được gắn cờ; giảng viên quyết định sửa nguồn.                                                                                                                                                          | FC-01–FC-03: diễn giải sai gây học sai; tra cứu không đổi dữ liệu nhưng câu trả lời chỉ sửa được một phần. Bắt duyệt mọi lần làm mất hỗ trợ buổi tối.                                                        | Loại coi mọi trích dẫn là đúng và loại bắt duyệt mọi truy vấn; giữ tự tra cứu, thêm luật kiểm nguồn và trình bày giới hạn.                                                                                |
+| `goi_y_bai_tap`    | **Tự làm có trần** cho gợi ý bước đầu; **cấm** giải hộ, xác nhận/phủ nhận đáp số hoặc viết lại câu trả lời của bài đang mở. Với bài đã đóng và có đáp án công bố, được giải thích đầy đủ trong phạm vi cho phép. | Không chờ TA duyệt gợi ý cơ bản. Trạng thái bài lấy từ dữ liệu khoá học; nếu chưa rõ, kiểm tra hoặc hỏi lại trước khi mở mức giải chi tiết.                                                                                                                           | FC-04: lộ đáp án làm mất tự học và công bằng, không thể làm người học “chưa thấy”. Chờ TA lúc 22:40 có thể qua hạn bài 23:59.                                                                                     | Loại tăng độ sâu theo số lần xin thêm; loại chờ duyệt mọi gợi ý vì ngoài giờ không có người. Chọn trần cứng áp dụng cả chuỗi hội thoại.                                                              |
+| `chuyen_TA`        | **Cần người duyệt:** học viên xác nhận nội dung.                                                                                                                                                                                                                    | Học viên xem bài tập, phần đã thử, câu hỏi cụ thể, giờ trực và ước lượng có căn cứ. Sửa bản xem trước thì xác nhận lại; không trả lời/hủy thì không gửi. Với lần thử trước chưa rõ kết quả, cảnh báo khả năng gửi trùng trước khi thử lại. | FC-05–FC-06: chuyển sai hoặc báo thành công giả gây chậm học và tốn công TA; sửa được một phần. Chờ học viên duyệt ngắn hơn vòng hỏi sai rồi sửa. Không yêu cầu TA duyệt trước chỉ để nhận câu hỏi. | Loại tự đoán rồi chuyển; loại coi gọi công cụ là đã thành công; chọn xem trước → xác nhận → gửi → hiện kết quả thật.                                                                                   |
+| `dang_FAQ`         | **Cần TA/giảng viên duyệt** với nội dung được phép chia sẻ; **cấm** tiết lộ thông tin ngoài quyền cung cấp cho học sinh hoặc thông tin cá nhân còn nhận diện được.                                                                        | Người duyệt kiểm tra đúng câu hỏi, câu trả lời, nguồn, quyền tiết lộ cho đối tượng nhận và thông tin riêng. Duyệt nội dung không thay thế quyền công bố nguồn. Không phản hồi thì giữ chờ; sửa nội dung phải duyệt lại.                                  | FC-07: lộ thông tin ngoài quyền hạn gây rủi ro bảo mật trực tiếp; FC-08: lộ riêng tư. Gỡ nội dung chỉ hạn chế lan truyền, không thu hồi được mọi bản sao. Chờ duyệt FAQ chấp nhận được.                    | Loại quan điểm thông tin đúng hoặc AI đọc được thì có thể công khai; loại đăng kèm cảnh báo. Chỉ dùng nguồn được phép tiết lộ cho đúng đối tượng, rồi duyệt phiên bản trước khi đăng. |
 
 ### Công cụ khó xếp nhất và đánh đổi
 
 **`dang_FAQ` là công cụ khó xếp nhất:** tự đăng có ích vì chia sẻ nhanh, nhưng FC-07 cho thấy FAQ do AI trả lời hoặc đăng tải có thể làm lộ tài liệu mà học sinh không có quyền truy cập, gây rủi ro bảo mật trực tiếp; FC-08 cho thấy một lần đăng có thể lộ dữ liệu riêng. Cấm toàn bộ thì mất giá trị chia sẻ câu trả lời đã được kiểm chứng. Phương án được tổng hợp từ các hồ sơ là **cần TA/giảng viên duyệt**, riêng thông tin ngoài quyền tiết lộ cho học sinh và thông tin cá nhân còn nhận diện được thì cấm. Việc chặn nội dung ngoài quyền áp dụng cả câu trả lời trong hội thoại, không chỉ lần gọi `dang_FAQ`.
 
-
-| Tình huống | Hành vi phải xảy ra | Sai có bị chặn và còn phải hỏi gì? | Có chờ vô ích không? |
-|---|---|---|---|
+| Tình huống                                                                          | Hành vi phải xảy ra                                                                                                                                                                                                                       | Sai có bị chặn và còn phải hỏi gì?                                                                                                                                                                                                                    | Có chờ vô ích không?                                                                                                                              |
+| ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | FC-07: AI định trả lời FAQ bằng tài liệu học sinh không có quyền truy cập | Kiểm tra nguồn và phạm vi được phép tiết lộ trước khi tạo câu trả lời; chặn thông tin hạn chế trong cả hội thoại, trích dẫn và FAQ. Chỉ bản dùng nguồn được phép mới đi tiếp vào luồng duyệt đăng. | Phải chặn ở cả đường trả lời và đăng tải; chỉ chặn nút đăng là chưa đủ. Học viên xác nhận hoặc TA duyệt câu chữ không tự làm thay đổi quyền tiết lộ nguồn. Nếu quyền chưa rõ thì không cung cấp nội dung đó. | Hỗ trợ bằng tài liệu được phép vẫn tiếp tục; chỉ yêu cầu liên quan thông tin ngoài quyền bị chặn. Không chờ rồi tự cho phép. |
-| FC-01: §3.3 mâu thuẫn √0,25 = 0,5 | Tra cứu tự làm, không bác phép tính đúng; hiện câu nguồn cần xem lại, lập luận tách riêng và đường báo giảng viên. | Không hạ quyền tra cứu để “chữa” lỗi diễn giải. Cần luật kiểm mâu thuẫn và giảng viên sửa nguồn; lỗi nguồn tinh vi vẫn có thể lọt. Gửi báo/chuyển TA cần hành động xác nhận của học viên. | Không chờ duyệt mới giải thích phép tính; chỉ đính chính chính thức chờ giảng viên. |
-| Bình thường: học viên hỏi định nghĩa trung vị ở §3.2 của buổi đã mở | Tra cứu, giải thích theo mục thật và hiển thị trích dẫn; không tự chuyển TA, không tự đăng FAQ. | Không cần hỏi lại khi câu hỏi và nguồn rõ. Nếu đổi thành xin đáp số bài đang mở, áp dụng trần FC-04. | Không phải chờ TA/giảng viên cho câu hỏi kiến thức thông thường. |
-
+| FC-01: §3.3 mâu thuẫn √0,25 = 0,5                                                 | Tra cứu tự làm, không bác phép tính đúng; hiện câu nguồn cần xem lại, lập luận tách riêng và đường báo giảng viên.                                                                                                  | Không hạ quyền tra cứu để “chữa” lỗi diễn giải. Cần luật kiểm mâu thuẫn và giảng viên sửa nguồn; lỗi nguồn tinh vi vẫn có thể lọt. Gửi báo/chuyển TA cần hành động xác nhận của học viên.                             | Không chờ duyệt mới giải thích phép tính; chỉ đính chính chính thức chờ giảng viên.                                                   |
+| Bình thường: học viên hỏi định nghĩa trung vị ở §3.2 của buổi đã mở  | Tra cứu, giải thích theo mục thật và hiển thị trích dẫn; không tự chuyển TA, không tự đăng FAQ.                                                                                                                             | Không cần hỏi lại khi câu hỏi và nguồn rõ. Nếu đổi thành xin đáp số bài đang mở, áp dụng trần FC-04.                                                                                                                                    | Không phải chờ TA/giảng viên cho câu hỏi kiến thức thông thường.                                                                           |
 
 ## §5. Prototype  (chặng 5)
-- Link hoặc file · công cụ · phần nào mock · có lời gọi AI thật không.
-- 1–2 ảnh có đánh số; mỗi số: thể hiện gì · nguyên tắc HAX/PAIR nào · mức tự chủ nào.
-- Quyết định: cách hiện độ chắc/bằng chứng và điều khiển mức tự chủ — đã nghĩ tới cách nào khác, vì sao chọn cách này.
+## §5. Prototype
+
+### 5.1 Link hoặc file · công cụ · phần mock · lời gọi AI thật
+
+Prototype được xây dựng bằng React, TypeScript và Vite. File chạy chính nằm trong thư mục `src/`; có thể khởi động bằng:
+
+```bash
+npm install
+npm run dev
+```
+Prototype có ba lớp chính:
+
+- Giao diện chat responsive: sidebar, lịch sử hội thoại, message composer, citation card, loading state, warning panel và recovery actions.
+
+- Failure-handling layer: schema FailureCase, registry, resolver và các handler FC-01 đến FC-08.
+- Adapter layer: tách UI khỏi phần xử lý AI và tool.
+Phần mock gồm:
+- Dữ liệu khóa học Lesson 3 và các mục §3.1–§3.5.
+- Các cuộc hội thoại mẫu.
+- Kết quả của tra_cuu_tai_lieu, goi_y_bai_tap, chuyen_TA và dang_FAQ.
+- Các trạng thái báo lỗi, chờ duyệt, chuyển TA và báo cáo tài liệu.
+
+Bản prototype trên nhánh main cũng có lời gọi OpenAI thật thông qua server-side adapter. API key được đặt trong biến môi trường .env, không đưa vào mã nguồn hoặc frontend. System prompt yêu cầu AI:
+- Chỉ dùng tài liệu đã mở.
+- Không bịa citation.
+- Giữ chế độ học tập, không làm hộ bài đang mở.
+- Phân biệt bằng chứng, suy luận và thông tin chưa xác nhận.
+- Phát hiện và trả về trạng thái có cấu trúc cho FC-01 đến FC-04.
+
+Các tool giáo dục vẫn đang được mô phỏng; prototype chưa có backend quản lý TA, FAQ hoặc dữ liệu người dùng thật.
+
+### 5.2 Hai màn hình demo
+#### Hình 1 — FC-01: Tài liệu có câu sai
+
+Màn hình hiển thị câu trả lời cho trường hợp học viên tính phương sai 0,25 và độ lệch chuẩn 0,5.
+
+Prototype:
+- Xác nhận phép tính √0,25 = 0,5.
+- Hiển thị citation thật đến §3.3.
+- Tách phần trích dẫn khỏi phần lập luận của trợ lý.
+- Gắn nhãn “Lập luận của trợ lý — chưa được giảng viên xác nhận”.
+- Hiển thị cảnh báo “Tài liệu cần xem lại”.
+- Cho phép người dùng chọn “Báo tài liệu cần xem lại” hoặc “Hỏi thêm”.
+HAX/PAIR được thể hiện:
+- HAX G11: giải thích vì sao câu trả lời không chỉ lặp lại tài liệu.
+- HAX G2: thể hiện mức độ chắc chắn và giới hạn xác nhận.
+- HAX G15: nút báo lỗi gắn với đúng citation §3.3.
+Mức tự chủ:
+- tra_cuu_tai_lieu: tự làm vì đây là thao tác chỉ đọc.
+- Báo tài liệu: không tự động khẳng định đã gửi; người dùng phải chọn hành động và hệ thống chỉ báo thành công khi có kết quả thật.
+
+#### Hình 2 — FC-07: Yêu cầu đăng FAQ khi chưa được duyệt
+Màn hình hiển thị khi học viên yêu cầu đăng câu trả lời thành FAQ cho cả lớp.
+
+Prototype:
+- Không gọi dang_FAQ ngay.
+- Chuyển câu trả lời thành trạng thái “FAQ draft needs review”.
+- Hiển thị nhãn “Draft — pending staff approval”.
+- Nêu rõ TA hoặc giảng viên phải kiểm tra câu hỏi, câu trả lời, bằng chứng và đối tượng nhận.
+- Cho phép xem trạng thái chờ duyệt hoặc rút yêu cầu.
+- Không coi việc học viên yêu cầu hoặc việc reviewer không phản hồi là sự đồng ý.
+HAX/PAIR được thể hiện:
+- HAX G1: nói rõ AI chỉ chuẩn bị bản nháp, không có quyền tự đăng.
+- HAX G10: thu hẹp hành động khi chưa đủ quyền.
+- HAX G9: cung cấp đường rút yêu cầu và xử lý correction.
+Mức tự chủ:
+- dang_FAQ: cần TA hoặc giảng viên duyệt.
+- Nội dung chưa được duyệt không được đăng cho cả lớp.
+
+#### 5.3 Quyết định về độ chắc chắn, bằng chứng và mức tự chủ
+
+Nhóm chọn cách hiển thị bằng chứng ngay trong câu trả lời, thông qua citation card, nhãn trạng thái và warning panel. Người dùng có thể phân biệt:
+1. Nội dung lấy từ tài liệu nào.
+2. Phần nào là lập luận của trợ lý.
+3. Phần nào chưa được xác nhận.
+4. Hành động nào đang chờ người dùng hoặc người có thẩm quyền duyệt.
+Nhóm đã cân nhắc ba cách khác:
+- Chỉ hiển thị câu trả lời cuối cùng: giao diện gọn hơn nhưng người dùng không biết câu trả lời dựa vào đâu.
+- Chỉ hiển thị citation ở cuối hội thoại: citation dễ bị bỏ qua và không gắn rõ với phần có rủi ro.
+- Dùng màu sắc mạnh để phân biệt mức độ chắc chắn: dễ nhìn nhưng dễ gây hiểu nhầm rằng màu sắc tự nó là bằng chứng.
+Nhóm chọn citation card kết hợp nhãn bằng chữ, vì cách này minh bạch hơn và không phụ thuộc hoàn toàn vào màu sắc. Mức tự chủ được điều khiển bằng trạng thái và nút hành động: tự làm, cần xác nhận, hoặc bị chặn.
+
 
 ## §6. Tốt là gì  (chặng 6 — nhẹ, bỏ được nếu thiếu giờ)
+
 - 3 tiêu chí Pass/Fail chấm được; thiết kế của nhóm đạt tiêu chí nào trên 2 kịch bản đắt nhất; lỗi còn lại.
 
+### 6.1 Ba tiêu chí Pass/Fail
+
+| Tiêu chí | Pass khi | FC-07 | FC-01 |
+|---|---|---|---|
+| Bằng chứng và độ chắc chắn | Citation thật được hiển thị; nếu bằng chứng thiếu hoặc có mâu thuẫn thì phải ghi rõ | Pass: bản FAQ ở trạng thái chờ duyệt, không giả vờ đã được xác minh | Pass: hiển thị §3.3 nhưng gắn cảnh báo câu nguồn cần xem lại |
+| Không tự thực hiện hành động rủi ro | Không đăng FAQ hoặc báo thành công khi chưa có quyền và kết quả thật | Pass: `dang_FAQ` bị chặn trước khi TA/giảng viên duyệt | Pass: thao tác báo tài liệu chỉ được coi là gửi khi có kết quả thật |
+| Có recovery path rõ ràng | Người dùng biết bước tiếp theo và có thể hủy, rút hoặc báo lỗi | Pass: xem trạng thái chờ duyệt hoặc rút yêu cầu | Pass: báo tài liệu cần xem lại hoặc hỏi thêm |
+
+Trên hai kịch bản đắt nhất, prototype đạt **3/3 tiêu chí ở mức giao diện và luồng mock**.
+
+### 6.2 Lỗi còn lại
+
+- Luồng duyệt thật của TA/giảng viên chưa có backend.
+- Tool `dang_FAQ` chưa có khả năng xóa hoặc thu hồi bài đã đăng.
+- Việc phát hiện thông tin riêng tư hoặc nguồn bị giới hạn vẫn có thể bỏ sót các dấu hiệu gián tiếp.
+- Việc báo giảng viên trong prototype chưa phải là một kênh gửi thật.
+- Khi dùng OpenAI thật, mô hình vẫn có thể phân loại sai một ca chưa xuất hiện trong FC-01 đến FC-04; vì vậy resolver và failure registry vẫn cần được kiểm thử thêm.
+
 ## §7. Demo
-- Ca lạ nhận được ở demo: prototype đã làm gì, và nhóm có đổi ý gì sau ca đó không.
+
+Một ca lạ được thử trong demo là học viên hỏi rất mơ hồ:
+
+> “Why is this wrong? Can you ask the TA?”
+
+Prototype không tự đoán bài tập hoặc tự chuyển câu hỏi. Thay vào đó, hệ thống hiển thị trạng thái “More context needed”, yêu cầu học viên cung cấp bài tập, phần đã làm và bước đang vướng. Hệ thống cũng nói rõ câu hỏi chưa được gửi cho TA.
+
+Sau ca này, nhóm thống nhất rằng nút “Hỏi TA” không được xem là sự cho phép chuyển câu hỏi. Cần có ba bước riêng:
+
+1. Hỏi bổ sung thông tin.
+2. Hiển thị bản xem trước có thể chỉnh sửa.
+3. Chỉ chuyển sau khi học viên xác nhận đúng nội dung.
+
+Điều này làm rõ hơn ranh giới giữa việc AI chuẩn bị một hành động và việc AI thực sự thực hiện hành động đó.
+
+
