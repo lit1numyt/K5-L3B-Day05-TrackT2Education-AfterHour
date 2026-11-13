@@ -25,8 +25,6 @@ Lát cắt: Trong trợ lý học bài của trang khoá học (kiểu ChatGPT S
 - Bằng chứng: cột "AI có thể sai thế nào" trỏ về một tool hoặc một dòng dữ liệu của track (hoặc chỗ dữ liệu không có).
 - Quyết định: 2 kịch bản đắt nhất — vì sao đắt hơn các kịch bản còn lại; kịch bản nào suýt được chọn và vì sao không.
 
-### Nội dung trả lời
-
 | Kịch bản | Tin người dùng | Lớp | AI có thể sai thế nào và bằng chứng | Sản phẩm tốt nên làm gì | Nhãn |
 |---|---|---|---|---|---|
 | [FC-01 — Tài liệu sai độ lệch chuẩn](failure-cases/FC-01-tai-lieu-sai-do-lech-chuan.md) | “Em tự luyện dãy 0, 1, 0, 1 ra phương sai 0,25, độ lệch chuẩn 0,5. Tài liệu bảo độ lệch chuẩn luôn nhỏ hơn phương sai, em sai ở đâu?” | ① | `tra_cuu_tai_lieu` trả §3.3 có câu sai “độ lệch chuẩn luôn nhỏ hơn phương sai”; AI dùng trích dẫn thật để bác phép tính đúng hoặc bịa lỗi chia n−1. | Kiểm tra √0,25 = 0,5; chỉ câu cần xem lại; tách trích dẫn khỏi lập luận của trợ lý; đề nghị báo giảng viên, không tự sửa tài liệu hay nhận xét năng lực học viên. | Không chấp nhận được |
@@ -65,8 +63,6 @@ Với mỗi kịch bản đắt nhất:
 - Loại lỗi (hệ thống / người dùng / ngữ cảnh) và vì sao cách nói, cách sửa đi theo loại đó.
 - 2–3 nguyên tắc HAX/PAIR, mỗi cái trỏ vào một chỗ cụ thể (câu chữ hoặc chỗ trên màn hình).
 - Lỗi nào sửa câu chữ không cứu được (nếu có), và thiết kế cứu nó thế nào.
-
-### Nội dung trả lời
 
 Các trạng thái, lời thoại và kênh báo dưới đây là yêu cầu thiết kế dựa trên hồ sơ ca lỗi; không phải xác nhận hệ thống hiện tại đã triển khai hoặc đã gửi thông báo thật.
 
@@ -114,8 +110,6 @@ Các trạng thái, lời thoại và kênh báo dưới đây là yêu cầu th
 | FC-01 | HAX G2 — Nói rõ mức đáng tin | Nhãn “Lập luận của trợ lý, chưa được giảng viên xác nhận”. |
 | FC-01 | HAX G15 — Khuyến khích phản hồi cụ thể | Nút báo gắn ngay trên câu bị nghi sai, kèm mã mục và phản ví dụ. |
 
-**Lỗi không cứu được chỉ bằng câu chữ:** FC-07 cần kiểm tra quyền đọc nguồn của người nhận trước khi AI dùng tài liệu để trả lời FAQ, đồng thời chặn nội dung ngoài quyền khi đăng tải. Chỉ duyệt câu chữ hoặc thêm cảnh báo sau trả lời không ngăn được lộ tài liệu. FC-01 cần quy trình báo và đính chính nguồn, vì một lời giải thích đúng trong một cuộc trò chuyện không sửa §3.3 cho người học tiếp theo. Những sai sót tinh vi mà AI không phát hiện vẫn cần giảng viên kiểm tra.
-
 ## §4. Mức tự chủ (chặng 4)
 
 Với mỗi tool:
@@ -128,9 +122,6 @@ Thêm:
 - Luật thêm hoặc tool tách bước (nếu có), và vì sao.
 - Một mức tự chủ đã đổi lời hứa nào với người dùng.
 
-### Nội dung trả lời
-
-FC-07 được hiểu theo nội dung nhóm vừa xác nhận: FAQ do AI trả lời hoặc đăng tải có thể tiết lộ tài liệu mà học sinh không có quyền truy cập, dẫn đến rủi ro bảo mật. Nội dung có thể đúng nhưng vẫn không được phép cung cấp; việc AI truy cập được nguồn không đồng nghĩa được quyền công bố nguồn đó.
 
 ### Quyết định cho từng công cụ
 
@@ -145,11 +136,6 @@ FC-07 được hiểu theo nội dung nhóm vừa xác nhận: FAQ do AI trả l
 
 **`dang_FAQ` là công cụ khó xếp nhất:** tự đăng có ích vì chia sẻ nhanh, nhưng FC-07 cho thấy FAQ do AI trả lời hoặc đăng tải có thể làm lộ tài liệu mà học sinh không có quyền truy cập, gây rủi ro bảo mật trực tiếp; FC-08 cho thấy một lần đăng có thể lộ dữ liệu riêng. Cấm toàn bộ thì mất giá trị chia sẻ câu trả lời đã được kiểm chứng. Phương án được tổng hợp từ các hồ sơ là **cần TA/giảng viên duyệt**, riêng thông tin ngoài quyền tiết lộ cho học sinh và thông tin cá nhân còn nhận diện được thì cấm. Việc chặn nội dung ngoài quyền áp dụng cả câu trả lời trong hội thoại, không chỉ lần gọi `dang_FAQ`.
 
-Các hồ sơ chưa ghi nhận từng thành viên từng bỏ phiếu chọn mức nào. Vì vậy không gán ý kiến cá nhân cho Khoa, Đạt hay Nguyên; phần cần bổ sung sau thảo luận là lựa chọn ban đầu của từng người và đánh đổi họ chấp nhận. Nội dung ở đây là phương án dựa trên các ca đã viết, chưa thay thế biên bản xác nhận của từng thành viên.
-
-### Đối chiếu mức tự chủ trên ba tình huống
-
-Bảng dưới là kiểm tra bằng lập luận và tiêu chí chạy thử; **chưa phải kết quả kiểm thử ứng dụng**.
 
 | Tình huống | Hành vi phải xảy ra | Sai có bị chặn và còn phải hỏi gì? | Có chờ vô ích không? |
 |---|---|---|---|
@@ -157,17 +143,6 @@ Bảng dưới là kiểm tra bằng lập luận và tiêu chí chạy thử; *
 | FC-01: §3.3 mâu thuẫn √0,25 = 0,5 | Tra cứu tự làm, không bác phép tính đúng; hiện câu nguồn cần xem lại, lập luận tách riêng và đường báo giảng viên. | Không hạ quyền tra cứu để “chữa” lỗi diễn giải. Cần luật kiểm mâu thuẫn và giảng viên sửa nguồn; lỗi nguồn tinh vi vẫn có thể lọt. Gửi báo/chuyển TA cần hành động xác nhận của học viên. | Không chờ duyệt mới giải thích phép tính; chỉ đính chính chính thức chờ giảng viên. |
 | Bình thường: học viên hỏi định nghĩa trung vị ở §3.2 của buổi đã mở | Tra cứu, giải thích theo mục thật và hiển thị trích dẫn; không tự chuyển TA, không tự đăng FAQ. | Không cần hỏi lại khi câu hỏi và nguồn rõ. Nếu đổi thành xin đáp số bài đang mở, áp dụng trần FC-04. | Không phải chờ TA/giảng viên cho câu hỏi kiến thức thông thường. |
 
-### Luật bổ sung và tách bước xử lý
-
-1. **Nguồn và diễn giải:** mã mục phải tồn tại; nguồn không có thì nói không tìm thấy và hỏi lại (FC-02). Nội dung buổi chưa mở chỉ chỉ đường theo đề cương, không giảng trọn (FC-03). Mâu thuẫn với phép tính kiểm được phải hiện cảnh báo, không bịa lỗi của học viên (FC-01).
-2. **Gợi ý theo trạng thái bài:** tách mức gợi ý bước đầu và giải chi tiết trong luồng xử lý `goi_y_bai_tap`; hệ thống quyết định theo trạng thái bài, không theo mức nài nỉ. Đây là thiết kế đề xuất, không khẳng định có hai công cụ mới trong bảng tool.
-3. **Chuyển TA:** hỏi rõ → xem trước → học viên xác nhận → gọi `chuyen_TA` → hiện thành công/thất bại/chưa xác nhận. Không bịa thời gian; ngoài giờ phải nói thật. Trong bối cảnh FC-04, 22:40 đã ngoài giờ 08:00–22:00; 08:00 ngày 14/11 là thời điểm trực tiếp theo, không bảo đảm lúc đó có câu trả lời và không hứa trả lời trước hạn bài.
-4. **Quyền tiết lộ và đăng tải:** kiểm tra nguồn và đối tượng được nhận trước khi dùng thông tin trong câu trả lời hoặc FAQ. Ngoài quyền thì không trả lời bằng nội dung đó, không trích dẫn tiết lộ, không đăng. Với nguồn được phép: soạn bản nháp → loại thông tin nhận diện → TA/giảng viên duyệt đúng phiên bản → gọi `dang_FAQ`. Quyền tiết lộ và duyệt nội dung là hai điều kiện riêng; phải được kiểm soát trong luồng xử lý, không chỉ bằng lời nhắc AI. Chưa có xác nhận từ công cụ thì không hiện “Đã đăng”.
-5. **Báo và khôi phục:** nút báo tài liệu, hàng chờ duyệt, gỡ FAQ và gửi đính chính là chức năng đề xuất hoặc thao tác quản trị; không giả định bốn công cụ hiện có tự làm được. Nếu chưa có nút báo tài liệu, có thể dùng chuyển TA sau khi học viên xác nhận; nếu không có khả năng gỡ thì nói rõ giới hạn, không hứa thu hồi mọi bản sao.
-
-### Lời hứa với người dùng thay đổi
-
-Với `dang_FAQ`, lời hứa là: **“Mình chỉ dùng thông tin được phép cung cấp cho bạn để trả lời và soạn FAQ. FAQ cho cả lớp còn cần TA hoặc giảng viên duyệt trước khi đăng. Mình không thể tiết lộ nguồn ngoài quyền hạn, dù thông tin đó đúng.”** Không hứa đăng ngay theo yêu cầu học viên. Với trợ giúp riêng và tra cứu chỉ đọc, học viên vẫn nhận hỗ trợ ngay trong giới hạn tài liệu và tính trung thực học thuật.
 
 ## §5. Prototype  (chặng 5)
 - Link hoặc file · công cụ · phần nào mock · có lời gọi AI thật không.
