@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "api": "node server.mjs",
     "build": "vite build",
     "typecheck": "tsc -b",
     "preview": "vite preview"
@@ -14,7 +15,8 @@
     "vite": "latest",
     "typescript": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "openai": "latest"
   },
   "devDependencies": {
     "@types/react": "latest",

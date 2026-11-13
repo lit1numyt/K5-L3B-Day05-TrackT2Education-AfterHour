@@ -8,16 +8,20 @@ This repository now includes a responsive React/Vite prototype for the AI Study 
 
 ```bash
 npm install
+cp .env.example .env
+# Add your OpenAI key to .env, then use two terminals:
+npm run api
 npm run dev
 ```
 
-Use `npm run build` to create a production build.
+Use `npm run build` to create a production build. The browser calls `/api/chat`; the API key stays in the Node server and is never exposed to the frontend.
 
 ### What is included
 
 - Responsive study chat layout with collapsible navigation, conversation history, empty state, loading state, keyboard send behavior, citations, and copy actions.
 - Mock conversations for explanations, exercise hints, and course-context questions.
-- Replaceable `StudyAssistantAdapter` with `MockStudyAssistantAdapter` as the default and an unconfigured API adapter for future integration.
+- Replaceable `StudyAssistantAdapter` with an OpenAI Responses API adapter as the default. The mock adapter remains available for offline demos.
+- Server-side study-mode system prompt with Lesson 3 fixtures, educational integrity rules, and structured FC-01–FC-04 detection.
 - Configuration-driven failure-handling types, registry, disabled FC-01 through FC-08 placeholders, and an intentionally unimplemented resolver.
 
 The failure placeholders remain disabled and contain no invented case-specific behavior. They are ready to be populated only after the team approves the corresponding failure-case documents.

@@ -1,11 +1,11 @@
 import { sections } from '../data/course-fixtures'
-import type { AssistantResponse, StudyAssistantAdapter, ToolResult } from './assistant-adapter'
+import type { AssistantResponse, ChatHistoryItem, StudyAssistantAdapter, ToolResult } from './assistant-adapter'
 import { resolveFailure } from '../features/failure-handling/resolver'
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 export class MockStudyAssistantAdapter implements StudyAssistantAdapter {
-  async sendMessage(message: string): Promise<AssistantResponse> {
+  async sendMessage(message: string, _history?: ChatHistoryItem[]): Promise<AssistantResponse> {
     await wait(850)
     const failure = resolveFailure({ userMessage: message, conversationId: 'mock-conversation' })
     if (failure.matched && failure.presentation) {
