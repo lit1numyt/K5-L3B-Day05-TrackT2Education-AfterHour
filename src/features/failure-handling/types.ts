@@ -17,6 +17,6 @@ export interface FailureCase {
 }
 
 export interface FailureContext { userMessage: string; conversationId: string; toolName?: string; toolResult?: unknown }
-export type FailureAction = { id: string; label: string; kind?: 'primary' | 'secondary' | 'warning' }
+export type FailureAction = { id: string; label: string; kind?: 'primary' | 'secondary' | 'warning'; mockResult?: string }
 export interface FailurePresentation { id: string; title: string; state: FailureUIState; message: string; badge?: string; evidence?: string; actions: FailureAction[] }
 export interface FailureHandlerResult { matched: boolean; failureCaseId?: string; uiState?: string; message?: string; actions?: string[]; recovery?: string; presentation?: FailurePresentation }
