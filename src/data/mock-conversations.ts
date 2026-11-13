@@ -1,4 +1,5 @@
 import type { Citation } from './course-fixtures'
+import type { FailurePresentation } from '../features/failure-handling/types'
 
 export type Message = {
   id: string
@@ -6,6 +7,7 @@ export type Message = {
   text: string
   citations?: Citation[]
   kind?: 'normal' | 'uncertain' | 'hint' | 'ta' | 'tool-error'
+  failure?: FailurePresentation
   time?: string
 }
 
