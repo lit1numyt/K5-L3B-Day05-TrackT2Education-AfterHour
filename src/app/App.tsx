@@ -41,15 +41,36 @@ export default function App() {
   }
   const newChat = () => { const id = crypto.randomUUID(); setConversations((items) => [{ id, title: 'New conversation', preview: 'Start a new study session', messages: [] }, ...items]); setActiveId(id); setComposer('') }
   const copy = (text: string) => { navigator.clipboard?.writeText(text); setNotice('Copied to clipboard'); window.setTimeout(() => setNotice(''), 1800) }
+  const addActionResult = (text: string, kind: Message['kind'] = 'normal') => {
+    const assistant: Message = { id: crypto.randomUUID(), role: 'assistant', text, kind, time: 'Now' }
+    setConversations((items) => items.map((item) => item.id === active.id ? { ...item, messages: [...item.messages, assistant] } : item))
+  }
   const handleFailureAction = async (actionId: string) => {
+    const failureMessage = [...active.messages].reverse().find((message) => message.failure?.actions.some((action) => action.id === actionId))
+    const action = failureMessage?.failure?.actions.find((item) => item.id === actionId)
     if (actionId === 'transfer-ta' || actionId === 'ask-ta-n') {
       if (!window.confirm('TA trực 08:00–22:00. Câu hỏi sẽ được xem sớm nhất từ 08:00 ngày 14/11, sau hạn nộp. Vẫn chuyển?')) return
       setToolStatus('Preparing a request for your TA...');
       const result = await adapter.transferToTA(active.messages[active.messages.length - 1]?.text || '')
-      setToolStatus(''); setNotice(result.ok ? 'Request submitted to the TA queue' : 'TA request was not submitted'); window.setTimeout(() => setNotice(''), 2600)
+      setToolStatus('');
+      addActionResult(action?.mockResult ? `${action.mockResult}\n\nTool result: ${result.message}` : result.message, result.ok ? 'ta' : 'tool-error')
+      setNotice(result.ok ? 'Mock TA request submitted' : 'TA request was not submitted'); window.setTimeout(() => setNotice(''), 2600)
       return
     }
-    if (actionId === 'report-material') { setNotice('Not submitted: lecturer reporting is not connected in mock mode'); window.setTimeout(() => setNotice(''), 2800); return }
+    if (actionId === 'retry-transfer') {
+      if (!window.confirm('The earlier transfer is still unconfirmed. Retry anyway?')) return
+      setToolStatus('Retrying TA transfer in mock mode...')
+      const result = await adapter.transferToTA(active.messages[active.messages.length - 1]?.text || '')
+      setToolStatus('')
+      addActionResult(action?.mockResult ? `${action.mockResult}\n\nTool result: ${result.message}` : result.message, result.ok ? 'ta' : 'tool-error')
+      return
+    }
+    if (actionId === 'copy-question') {
+      const question = [...active.messages].reverse().find((message) => message.role === 'user')?.text || ''
+      copy(question); addActionResult(action?.mockResult || 'Mock result: the question was copied.')
+      return
+    }
+    if (action?.mockResult) { addActionResult(action.mockResult, action.kind === 'warning' ? 'uncertain' : 'normal'); setNotice('Mock outcome shown in chat'); window.setTimeout(() => setNotice(''), 1800); return }
     setNotice('Action available in the course materials'); window.setTimeout(() => setNotice(''), 1800)
   }
   const handleKey = (event: React.KeyboardEvent<HTMLTextAreaElement>) => { if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); void send() } }
