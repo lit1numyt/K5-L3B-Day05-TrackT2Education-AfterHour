@@ -1,11 +1,11 @@
-# FC-03 — Hỏi nội dung buổi chưa mở (p-value, buổi 7), AI giảng cả bài từ kiến thức ngoài
+# FC-03 — Nội dung buổi chưa học p-value
 
 ## 1. Basic information
 
 | Field | Value |
 |---|---|
 | Failure Case ID | FC-03 |
-| Failure Case Name | Giảng p-value (buổi 7 chưa mở) không căn cứ và gắn sai vào Bài 3 |
+| Failure Case Name | Nội dung buổi chưa học p-value |
 | Author | Nguyễn Lương Nguyên |
 | Task Number | Chặng 2 — Kịch bản rủi ro (hard test "hỏi nội dung buổi chưa học") |
 | Difficulty Category | 3 — Outside scope / authority |

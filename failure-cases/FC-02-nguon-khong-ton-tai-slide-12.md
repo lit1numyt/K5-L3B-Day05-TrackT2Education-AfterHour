@@ -1,11 +1,11 @@
-# FC-02 — Học viên nhắc "slide 12" không tồn tại, AI đoán hoặc bịa nội dung
+# FC-02 — Nguồn không tồn tại slide 12
 
 ## 1. Basic information
 
 | Field | Value |
 |---|---|
 | Failure Case ID | FC-02 |
-| Failure Case Name | Bịa nội dung cho nguồn không tồn tại ("slide 12") và đoán nghĩa "độ lệch" |
+| Failure Case Name | Nguồn không tồn tại slide 12 |
 | Author | Nguyễn Lương Nguyên |
 | Task Number | Chặng 2 — Kịch bản rủi ro (hard test "học viên nhắc tới nguồn không có") |
 | Difficulty Category | 2 — Ambiguity / missing information |

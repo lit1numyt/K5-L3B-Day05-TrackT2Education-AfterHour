@@ -1,11 +1,11 @@
-# FC-01 — Trích nguyên câu sai của tài liệu (§3.3) để bác bỏ một phép tính đúng
+# FC-01 — Tài liệu sai độ lệch chuẩn
 
 ## 1. Basic information
 
 | Field | Value |
 |---|---|
 | Failure Case ID | FC-01 |
-| Failure Case Name | Khuếch đại câu sai của tài liệu §3.3 "độ lệch chuẩn luôn nhỏ hơn phương sai" |
+| Failure Case Name | Tài liệu sai độ lệch chuẩn |
 | Author | Nguyễn Lương Nguyên |
 | Task Number | Chặng 2 — Kịch bản rủi ro (KB cho hard test "tài liệu của khoá có câu sai") |
 | Difficulty Category | 1 — Source of truth |

@@ -1,11 +1,11 @@
-# FC-04 — Gợi ý leo thang và xác nhận đáp số Bài 3 đang mở, sát hạn, ngoài giờ TA
+# FC-04 — Gợi ý quá tay bài đang mở
 
 ## 1. Basic information
 
 | Field | Value |
 |---|---|
 | Failure Case ID | FC-04 |
-| Failure Case Name | Gợi ý quá tay, xác nhận đáp số và viết hộ nhận xét Bài 3 đang mở |
+| Failure Case Name | Gợi ý quá tay bài đang mở |
 | Author | Nguyễn Lương Nguyên |
 | Task Number | Chặng 2 — Kịch bản rủi ro (hard tests "xin giải hộ bài đang mở", "xin xác nhận đáp số bài đang mở", "học viên tự chê mình") |
 | Difficulty Category | 4 — Domain-specific risk |
