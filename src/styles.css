@@ -46,3 +46,18 @@ body,.app-shell,.main,.chat { background:#000; }
 .sidebar,.topbar { background:#000; border-color:transparent; }
 .sidebar { border-right:0; }
 .topbar { border-bottom:0; }
+
+/* Minimal ChatGPT-like treatment: reserve sage for sending and explicit text highlights. */
+.brand-mark,.empty-mark { background:#2a2d2a; color:#e7ebe7; }
+.new-chat { background:#242724; border:1px solid #303430; color:#dfe4df; }.new-chat:hover { background:#2b2f2b; }
+.history-item:hover,.history-item.selected { background:#1a1c1a; color:#e4e8e4; }.history-item.selected .history-icon { color:#b7c2b7; }
+.course-icon,.profile>span:first-child { background:#242724; color:#c2c9c2; }.live-dot { background:#747a74; }
+.assistant-avatar { background:#202320; color:#c5cbc5; }
+.citation-icon { background:#242724; color:#c2c8c2; }.citation:hover { border-color:#4a4f4a; background:#181a18; }
+.integrity-note { background:#1c1e1c; border-color:#303430; color:#b8bdb8; }.integrity-note span { color:#c5cbc5; }
+.typing span { background:#858b85; }
+.prompt-grid button { border-color:#303430; color:#aeb5ae; }.prompt-grid button:hover { color:#c8d0c8; border-color:#525852; }
+.failure-panel,.failure-blocked,.failure-no_evidence { border-left-color:#555b55; border-color:#343934; background:#141614; }.failure-heading svg { color:#b9c0b9; }.failure-badge { background:#202320; color:#c4cbc4; }.failure-action,.failure-action.warning { background:#202320; border-color:#3a403a; color:#bfc6bf; }.failure-action:hover,.failure-action.warning:hover { background:#292d29; color:#eef2ee; }
+.composer:focus-within { border-color:#555b55; }.profile .dot { background:#747a74; }
+.message-row.user-row { justify-content:flex-end; }.user-row .message-content { flex:0 1 72%; max-width:72%; }.user-row .message-meta { justify-content:flex-end; }.user-row .bubble { text-align:left; }.user-row .avatar { order:2; }
+.send-button { background:#91a992; color:#111511; }.send-button:hover:not(:disabled) { background:#a5b9a6; }
