@@ -9,12 +9,15 @@ export class MockStudyAssistantAdapter implements StudyAssistantAdapter {
     await wait(850)
     const failure = resolveFailure({ userMessage: message, conversationId: 'mock-conversation' })
     if (failure.matched && failure.presentation) {
-      const citations = failure.failureCaseId === 'FC-01' || failure.failureCaseId === 'FC-02'
+      const citations = failure.failureCaseId === 'FC-05' || failure.failureCaseId === 'FC-06' || failure.failureCaseId === 'FC-07' || failure.failureCaseId === 'FC-08'
+        ? []
+        : failure.failureCaseId === 'FC-01' || failure.failureCaseId === 'FC-02'
         ? [sections[2]]
         : failure.failureCaseId === 'FC-03'
           ? [sections[0], sections[1], sections[3]]
           : [sections[1], sections[3], sections[4]]
-      return { text: failure.presentation.message, citations, kind: failure.presentation.state === 'blocked' ? 'tool-error' : 'uncertain', tool: failure.failureCaseId === 'FC-04' ? 'goi_y_bai_tap' : 'tra_cuu_tai_lieu', failure: failure.presentation }
+      const tool = failure.failureCaseId === 'FC-04' ? 'goi_y_bai_tap' : failure.failureCaseId === 'FC-05' || failure.failureCaseId === 'FC-06' ? 'chuyen_TA' : failure.failureCaseId === 'FC-07' || failure.failureCaseId === 'FC-08' ? 'dang_FAQ' : 'tra_cuu_tai_lieu'
+      return { text: failure.presentation.message, citations, kind: failure.presentation.state === 'blocked' || failure.failureCaseId === 'FC-06' ? 'tool-error' : failure.failureCaseId === 'FC-05' ? 'ta' : 'uncertain', tool, failure: failure.presentation }
     }
     const lower = message.toLowerCase()
     if (lower.includes('hint') || lower.includes('exercise') || lower.includes('homework')) {
