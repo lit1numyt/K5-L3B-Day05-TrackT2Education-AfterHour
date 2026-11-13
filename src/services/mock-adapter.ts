@@ -1,11 +1,21 @@
 import { sections } from '../data/course-fixtures'
 import type { AssistantResponse, StudyAssistantAdapter, ToolResult } from './assistant-adapter'
+import { resolveFailure } from '../features/failure-handling/resolver'
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 export class MockStudyAssistantAdapter implements StudyAssistantAdapter {
   async sendMessage(message: string): Promise<AssistantResponse> {
     await wait(850)
+    const failure = resolveFailure({ userMessage: message, conversationId: 'mock-conversation' })
+    if (failure.matched && failure.presentation) {
+      const citations = failure.failureCaseId === 'FC-01' || failure.failureCaseId === 'FC-02'
+        ? [sections[2]]
+        : failure.failureCaseId === 'FC-03'
+          ? [sections[0], sections[1], sections[3]]
+          : [sections[1], sections[3], sections[4]]
+      return { text: failure.presentation.message, citations, kind: failure.presentation.state === 'blocked' ? 'tool-error' : 'uncertain', tool: failure.failureCaseId === 'FC-04' ? 'goi_y_bai_tap' : 'tra_cuu_tai_lieu', failure: failure.presentation }
+    }
     const lower = message.toLowerCase()
     if (lower.includes('hint') || lower.includes('exercise') || lower.includes('homework')) {
       return { kind: 'hint', tool: 'goi_y_bai_tap', text: 'Start by ordering the values from smallest to largest. Then decide whether the exercise is asking about a typical center or about spread. I will not reveal the answer to an open exercise.', citations: [sections[4]] }
