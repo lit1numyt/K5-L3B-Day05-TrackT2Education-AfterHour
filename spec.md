@@ -5,13 +5,19 @@
 | Họ và Tên | Mã Học Viên | Việc đã làm |
 |---|---|---|
 | Đồng Hữu Nguyên Khoa | 2A202604000 |  |
-|  |  |  |
+| Trần Trọng Đạt | 2A202604030 |  |
 |  |  |  |
 
 
 ## §1. Lát cắt & phạm vi
 - Lát cắt (chép từ track).
-- 3 việc tính năng KHÔNG làm, mỗi việc một câu vì sao.
+- 3 việc tính năng KHÔNG làm, mỗi việc một câu vì sao.  
+Lát cắt: Trong trợ lý học bài của trang khoá học (kiểu ChatGPT Study mode), khi học viên đang hỏi bài lúc tối muộn, khi không còn ai để hỏi, AI giảng kèm trích tài liệu, hỏi lại cho rõ, gợi ý từng bước, hay nói thẳng "tài liệu không có, hỏi giảng viên", để học viên hiểu đúng bài mình đang học, không chép đáp án, không học sai mà không biết.
+
+3 việc tính năng không làm:
+- Tính năng không đưa ra kết quả cho câu hỏi về đáp án của học viên: lí do là gọi ý quá tay thì học viên sẽ chép và không hiểu được bài.
+- Tính năng đưa ra thông tin đúng với tài liệu được cung cấp, không bịa thêm thông tin, lý do là đưa ra thông tin không thuộc phạm vi tài liệu có thể khiến cho học sinh học sai mà không biết.
+- Tính năng không đưa ra câu trả lời nếu như không chắc chắn câu hỏi của học viên, nếu AI quá tự tin và tự đưa câu trả lời có thể khiến câu trả lời sai lệch so với ý định ban đầu của học viên.
 
 ## §2. Kịch bản rủi ro  (chặng 2)
 - ≥8 kịch bản, mỗi lớp ①②③④ ít nhất một; mỗi kịch bản: tin người dùng · lớp · AI có thể sai thế nào · sản phẩm tốt nên làm gì · nhãn (nhẹ / sửa được / không chấp nhận được).
